@@ -7,25 +7,209 @@ author:
         state: VA
         country: USA
         postal-code: 20147
-  - name: Add any co-authors as appropriate
-    orcid: 
-    affiliations:
-      - name: 
-        state: 
-        country: 
-        postal-code: 
 subtitle: An Introduction to Artificial Intelligence
 ---
 
-# AI Primer
-<!--Your first header will be the chapter's upper-level table of contents title.-->
-<!--If you'd like to have a subtitle, include it in the Quarto header above -->
+# AI in a nutshell
 
-Under your first header, include a brief introduction to your chapter.
+1. What is Artificial Intelligence?
 
-Starting prompt for this chapter: Chapter 2 demystifies Artificial Intelligence for microscopy users. It should define terms (e.g., machine/deep learning, supervised/unsupervised learning) without programming details such that an educated scientist without AI experience can understand how these concepts apply to microscopy in life sciences. The use-cases and strengths of different approaches for different applications should be discussed (e.g., contrasting unsupervised clustering vs supervised segmentation). This chapter should broadly introduce image restoration and segmentation, as they will be themes throughout.
+- Tunable functions that convert an input to an output, examples in microscopy: image -> measurement/ classification/ 3D reconstruction, sensor readings -> control of the instrument
+- AI historically includes everything from rule based systems, clustering, feature extraction, decision trees, modern deep learning up to Large Language models that have learned, among many other things, to invent new AI methods (example reference for each)
+- Today, when we talk about AI, we typically mean modern deep learning based methods that process images and other sensor readings and solve complicated analysis tasks without rules, trained on data wuith or without human feedback...
+- Deep learning is building arbitrarily complex functions resulting in a loss that are differentiable and can therefore be optimized using gradient descent with respect to the free parameters (rewrite more concisely).  These functions are called artificial neural networks, and typically consist of multiplications, additions, concatenations, and other non-linear functions, but they can also be used to model physical processes such as the transport of light through an optical system and a biological sample.  The combination of such black-box functions and physical models is extremely powerful.
 
-Suggestion from authors' meetings: This chapter can draw on the outlines from other chapters to introduce key topics for the following chapters.
+## What is Artificial Intelligence?
+
+Artificial Intelligence (AI) represents a fundamental shift in how we approach computation: instead of explicitly programming rules, we create systems that learn patterns from data. In microscopy, this translates to transforming raw sensor data—images, spectral measurements, or control signals—into meaningful outputs like segmented cells, 3D reconstructions, or optimized acquisition parameters.
+
+### From Rules to Learning
+
+The evolution of AI in microscopy mirrors the broader field's progression. Early systems relied on hand-crafted features and rule-based logic: threshold-based segmentation, morphological operations, and template matching. While effective for simple, well-defined problems, these approaches struggled with biological variability and complex imaging conditions.
+
+Modern deep learning changed this paradigm. Rather than defining what a cell boundary looks like, we show the system thousands of examples and let it discover the underlying patterns. This data-driven approach excels at handling the inherent complexity and variability of biological samples.
+
+### Deep Learning: Differentiable Programs
+
+At its core, deep learning constructs differentiable functions—artificial neural networks—composed of simple operations (matrix multiplications, element-wise nonlinearities, convolutions) arranged in complex architectures. The key insight: if we can compute gradients with respect to the network's parameters, we can optimize these parameters to minimize a loss function through gradient descent.
+
+This differentiability constraint shapes modern AI architectures. Convolutional neural networks leverage spatial structure in images. Recurrent networks process temporal sequences from time-lapse microscopy. Transformer architectures, originally developed for language, now excel at modeling long-range dependencies in volumetric data.
+
+### Physics-Informed Neural Networks
+
+A powerful emerging paradigm combines learned components with physical models. Instead of treating the microscope as a black box, we incorporate our understanding of optics, photophysics, and sample properties directly into the network architecture. For instance, a network might learn to deconvolve images by modeling both the point spread function and sample-specific aberrations, or predict fluorophore behavior by combining learned features with photochemical models.
+
+This hybrid approach offers several advantages: improved generalization from limited training data, physically interpretable intermediate representations, and the ability to incorporate measurement uncertainty. When we know the physics, we shouldn't force the network to rediscover it from scratch.
+
+### The Current Landscape
+
+Today's AI in microscopy spans a remarkable range of capabilities. Supervised learning methods excel at segmentation, classification, and quantification tasks when labeled data is available. Self-supervised approaches learn meaningful representations from unlabeled images, crucial when expert annotations are expensive or impossible to obtain. Generative models restore corrupted images, predict future timepoints, or synthesize one imaging modality from another.
+
+Large foundation models, trained on diverse microscopy datasets, are beginning to emerge. These models can be fine-tuned for specific tasks with minimal additional data, democratizing advanced AI capabilities for laboratories without extensive computational resources or machine learning expertise.
+
+
+
+
+
+  1. Introduction: Why AI for Microscopy?
+
+  - The data explosion in modern microscopy
+  - Limitations of manual analysis
+  - Promise of AI: speed, consistency, and discovery of subtle patterns
+  - This chapter's goal: build intuition without requiring programming knowledge
+
+  2. Understanding Artificial Intelligence in Context
+
+  2.1 What is Artificial Intelligence?
+
+  - Simple definition: systems that perform tasks typically requiring human intelligence
+  - The hierarchy: AI → Machine Learning → Deep Learning
+  - Why deep learning dominates modern microscopy applications
+
+  2.2 How Machines "Learn" from Images
+
+  - The concept of learning from examples vs. explicit programming
+  - Pattern recognition in microscopy: from pixels to biological meaning
+  - Training, validation, and testing: ensuring models work on new data
+
+  3. Core Learning Paradigms in Microscopy
+
+  3.1 Supervised Learning: Learning from Labeled Examples
+
+  - Definition and intuitive explanation
+  - Common applications: cell segmentation, phenotype classification
+  - Strengths: high accuracy when good labels exist
+  - Limitations: requires extensive manual annotation
+
+  3.2 Unsupervised Learning: Finding Hidden Patterns
+
+  - Definition and intuitive explanation
+  - Applications: clustering cell types, discovering phenotypes
+  - Strengths: no labels needed, can reveal unexpected patterns
+  - Limitations: results may not align with biological expectations
+
+  3.3 Self-Supervised and Semi-Supervised Learning
+
+  - Modern approaches that reduce labeling burden
+  - Examples: predicting masked image regions, using few labels effectively
+  - Growing importance in microscopy where labels are expensive
+
+  4. Key Tasks in Microscopy AI
+
+  4.1 Image Segmentation: Finding Objects
+
+  - What it means to segment an image
+  - Types: semantic (what), instance (individual objects), panoptic (both)
+  - Why it's fundamental to quantitative microscopy
+  - Preview of detailed coverage in Chapters 4 and 9
+
+  4.2 Image Restoration: Improving Image Quality
+
+  - Denoising: removing random variations
+  - Deconvolution: reversing optical blur
+  - Super-resolution: enhancing detail beyond hardware limits
+  - Preview of Chapter 6's detailed coverage
+
+  4.3 Classification and Detection
+
+  - Identifying cell types or states
+  - Finding rare events in large datasets
+  - Phenotype screening applications
+
+  4.4 Tracking and Dynamics
+
+  - Following objects through time
+  - Understanding biological processes
+  - Challenges unique to live imaging
+
+  5. What Makes a Good AI Approach for Your Problem?
+
+  5.1 Matching Methods to Biological Questions
+
+  - When traditional image processing suffices
+  - When machine learning adds value
+  - When deep learning becomes necessary
+  - Decision tree for method selection
+
+  5.2 Data Requirements and Realities
+
+  - How much data do different approaches need?
+  - Quality vs. quantity trade-offs
+  - Dealing with limited or imperfect data
+
+  5.3 Computational and Expertise Requirements
+
+  - Hardware needs: CPU vs. GPU
+  - Software ecosystems
+  - Required expertise levels
+  - Available resources and tools (preview of Chapter 8)
+
+  6. Understanding AI Outputs and Limitations
+
+  6.1 Interpreting AI Results
+
+  - Confidence scores and uncertainty
+  - Common artifacts and failure modes
+  - When to trust AI predictions
+
+  6.2 The Black Box Problem
+
+  - Why deep learning models are hard to interpret
+  - Implications for scientific discovery
+  - Emerging interpretability methods
+
+  7. AI as a Tool in the Scientific Method
+
+  7.1 Hypothesis-Driven vs. Discovery Research
+
+  - Using AI to test specific hypotheses
+  - Exploratory analysis and pattern discovery
+  - Maintaining scientific rigor
+
+  7.2 Validation and Reproducibility
+
+  - Importance of independent test sets
+  - Cross-validation strategies
+  - Sharing models and data (preview of Chapter 10)
+
+  8. Looking Ahead: Connecting to Later Chapters
+
+  - Deep dive into architectures (Chapter 4)
+  - Practical training considerations (Chapter 5)
+  - Image restoration applications (Chapter 6)
+  - Smart microscopy integration (Chapter 7)
+  - Finding and using existing tools (Chapter 8)
+  - Training your own models (Chapter 9)
+  - Ensuring quality (Chapter 10)
+
+  Summary: Key Takeaways
+
+  - AI is a powerful tool, not magic
+  - Different approaches suit different problems
+  - Success requires matching method to question
+  - Understanding limitations is as important as knowing capabilities
+
+  Glossary Additions for This Chapter
+
+  - Key terms to add: supervised learning, unsupervised learning, training data, validation, overfitting, generalization,
+  segmentation, restoration, classification
+
+  This outline provides a conceptual foundation without requiring programming knowledge, while setting up connections to
+  the more technical chapters that follow.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Include section headers as appropriate
 

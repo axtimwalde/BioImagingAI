@@ -16,6 +16,16 @@ In recent years, large language models (LLMs) have revolutionized how we interac
 
 This section introduces the fundamental concepts behind modern language models, focusing on transformer architectures that power tools like ChatGPT. We'll explain how these models function, their capabilities for understanding scientific text, and their emerging role in generating code for image analysis tasks. We'll demonstrate how microscopists can effectively use LLMs to learn new concepts, troubleshoot methods, and generate starting points for analysis scripts.
 
+::: {.callout-note}
+**Note for this section, deferred from [Chapter 2](2-primer.qmd).** The primer introduces foundation models compactly and points here for how language models are built. Three points worth developing:
+
+*Why next-word prediction yields more than next-word prediction.* The training objective sounds trivial, but it cannot be met from surface statistics: continuing a sentence requires syntax, and often the fact being referred to. Trained at sufficient scale, the model therefore comes to represent much of the structure that generated its corpus, without ever being told what that structure is. The representation, not the completion, is the product.
+
+*Pre-training buys a representation; post-training makes it usable.* Instruction tuning and reinforcement learning from human feedback [@ouyang_training_2022] are what turn a text completer into something that reliably follows a request. Neither redoes the pre-training, which is why adapting one of these models is so much cheaper than building it.
+
+*In-context learning, stated carefully.* Few-shot prompting did emerge from plain next-token pre-training, plausibly because corpora are full of sequences shaped like a few worked examples followed by an answer; what post-training added was reliability, not the ability itself. Citing this needs a Brown et al. (2020) entry, which `references.bib` does not yet have.
+:::
+
 ## Multi-modal AI: Vision-Language Models and Generative AI {#sec-multimodal-ai}
 
 Moving beyond text-only interfaces, multi-modal models combine language understanding with visual processing capabilities. This section explores how Vision-Language Models (VLMs) like GPT-4o can "see" and interpret microscopy images, assist with image annotation, and even aid in experimental design. We'll also cover generative AI technologies including diffusion models that can create synthetic training data, perform style transfer, or convert microscopy images into vector graphics for publications.

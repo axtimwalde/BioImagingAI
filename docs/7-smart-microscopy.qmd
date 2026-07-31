@@ -51,6 +51,9 @@ subtitle: An Introduction to Smart Microscopy
   * Challenges, opportunities
   * Event detection as the first step in the microscopy workflow
 
+* Learning the acquisition policy itself, not just the detector
+  * TODO (requested from @sec-ai-families): reinforcement learning is introduced nowhere else in the book, and closed-loop acquisition---where the model chooses what to image next and is rewarded by what it finds---is its most natural microscopy application. Even a short treatment of where this has and has not been demonstrated would close the gap.
+
 * Limitations and notes of caution related to inference
   * "Trusting the algorithms"
 

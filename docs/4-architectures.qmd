@@ -25,6 +25,10 @@ Under your first header, include a brief introduction to your chapter.
 
 Starting prompt for this chapter: Chapter 4 introduces architectures and loss models, defining them and providing examples through two practical case studies: image restoration and segmentation. Although this chapter will include code snippets/exercises, the presentation of essential concepts should communicate the philosophy behind the choice of a model for non-programmers.
 
+::: {.callout-note}
+**Note for this chapter, deferred from [Chapter 2](2-primer.qmd).** The primer distinguishes predictive from generative models---one returns the average of everything the input could have been, the other a sample from that set---and names three families in one sentence each before pointing here: adversarial training [@goodfellow_generative_2014], diffusion [@ho_denoising_2020], and flow matching [@lipman_flow_2023]. How they are built and trained is not covered anywhere else in the book, and the restoration case study is the natural place to develop at least one of them. The loss function is the part worth emphasizing for this audience, since it is what makes a predictive model produce smooth output and a generative one sharp output.
+:::
+
 ## Include section headers as appropriate
 
 Use markdown heading level two for section headers. You can use standard markdown formatting, for example _emphasize the end of this sentence_.

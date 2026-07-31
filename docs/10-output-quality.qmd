@@ -24,6 +24,14 @@ Starting prompt for this chapter: Chapter 10 addresses how to assess the quality
 * why do we need metrics? to pick models from different training iterations
   (avoid overfitting) and to select models with different hyperparameters
 * mention train/validate/test, discuss the need for "ground truth" data, can callback to chapter 5
+* TODO: @sec-domain-shift hands off two promises to this chapter. First, what to
+  measure when the concern is domain shift rather than accuracy on a held-out
+  split: evaluating on data from a genuinely different experiment, and what a
+  drop between the two tells you. Second, @sec-black-box hands off calibration.
+  It has already established the problem---a confidence score is not a second
+  opinion, and networks routinely report confidence above their accuracy---so
+  this chapter owns only the measurement and the remedy: reliability diagrams,
+  expected calibration error, temperature scaling, ensembles, and what to report.
 
 ## Metrics and Losses
 
@@ -67,4 +75,18 @@ Note: We are considering picking one example to place in call out boxes througho
 
 * usually not a single number: topological correctness vs. positional correctness
 * show traccuracy and discuss some of their metrics
+
+<!-- TODO (requested from @sec-classification-detection): Chapter 2 tells readers that
+     tracking has no single accuracy number and sends them here for the reason. The
+     specific point to make good on: the Cell Tracking Challenge reports edit-distance
+     measures (DET, SEG, TRA) alongside biologically motivated ones (fraction of complete
+     tracks, track fractions, branching correctness, cell-cycle accuracy), and these
+     correlate only moderately -- TRA can look near-perfect while almost no complete
+     lineage is recovered, because TRA counts local edits and one bad edit destroys a
+     whole track @maska_cell_2023. That is the concrete illustration of "no single
+     number". A separate linking benchmark now supplies fixed segmentations so that
+     association can be scored on its own, which is the clean way to answer "is my
+     detector or my linker the problem?". CHOTA is the recent attempt at one number that
+     captures detection, local association, and global lineage identity together. -->
+
 

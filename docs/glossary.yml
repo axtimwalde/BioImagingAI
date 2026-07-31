@@ -168,3 +168,51 @@ Self-supervised learning: |
 
 Supervised learning: |
   A deep learning method where models learn from labeled data (input-output pairs), enabling them to learn a mapping function for making predictions or decisions on unseen inputs.
+
+Unsupervised learning: |
+  A learning method that receives only inputs and no targets, optimizing a property of the data itself, such as how compactly groups of points can be described or how well a compressed version reconstructs the original. Clustering and dimensionality reduction are the most common examples.
+
+Clustering: |
+  An unsupervised method that partitions objects into groups of mutually similar members, without being told what the groups are. In microscopy it is typically applied to per-cell measurements to propose phenotype classes; the groups depend entirely on the features and the distance measure chosen, so they are hypotheses rather than findings.
+
+Dimensionality reduction: |
+  Re-expressing many measurements per object in a few dimensions, either by a linear projection that preserves variance (as in principal component analysis) or by a nonlinear embedding that preserves neighborhoods (as in UMAP or t-SNE), so that high-dimensional profiles can be visualized and compared.
+
+Reinforcement learning: |
+  A learning method with no fixed set of examples: an agent acts, the environment responds, and a reward scores the outcome, so the system generates its own training data by acting. In microscopy its natural application is closed-loop acquisition, where the choice of what to image next can be scored.
+
+Generative model: |
+  A model that represents the whole distribution of plausible outputs and draws a sample from it, rather than predicting a single most likely answer. Samples retain realistic texture and sharpness, but repeated runs give different results, and detail that the input did not support may be invented.
+
+Affinity: |
+  A prediction, made for a pair of pixels rather than a single pixel, of whether the two belong to the same object. A network that outputs affinities for many pixel pairs turns segmentation into a graph partitioning problem, solved afterwards by watershed or agglomerative merging.
+
+Watershed: |
+  A grouping algorithm that treats an image as a landscape and floods it from seed points, assigning each pixel to the seed whose basin reaches it first. It is the most common way of recovering individual objects from a boundary or affinity prediction, and variants such as the mutex watershed can also use evidence that two pixels belong to different objects.
+
+Tracking: |
+  Linking detected objects across the frames of a time-lapse to follow each one over time. Because cells divide, the result is a lineage tree rather than a set of independent paths, and a single incorrect link corrupts every measurement downstream of it.
+
+Modality translation: |
+  Predicting one imaging channel or contrast mechanism from another, such as estimating where fluorescently labeled structures would appear from a transmitted-light image of an unstained sample. It is trained supervised on paired acquisitions, so the second measurement supplies the labels.
+
+Validation Data: |
+  Examples withheld from gradient descent but used to monitor performance while training runs, so that training can be stopped before the model starts memorizing and so that choices such as architecture or hyperparameters can be compared. Because those choices are made on it, a model can end up overfitted to the validation data as well, which is why it has to stay separate from the test data.
+
+Test Data: |
+  Examples set aside and looked at exactly once, at the very end, to estimate how a model will perform on data it has never seen. Using them to select or tune a model destroys that estimate and turns them into validation data.
+
+Overfitting: |
+  Training a model to the point where it reproduces its training examples rather than the general rules behind them, so that performance on the training data keeps improving while performance on new data degrades. It is unavoidable if training runs long enough, and is detected by watching a validation dataset rather than the training loss.
+
+Domain shift: |
+  A systematic difference between the images a model is applied to and the images it was trained on, so that accuracy measured on the training experiment does not carry over. In microscopy the causes are usually mundane and unannounced---a different objective or immersion medium, a realigned laser, a new cell line or passage number---and the symptom is rarely an obvious error, more often slightly degraded output that still looks plausible.
+
+Shortcut learning: |
+  A model solving the training task through a cue that really is predictive in the training data but is incidental to the biological question, such as position on a multi-well plate, staining batch, or which day a sample was imaged. Because the same cue is usually present in the validation data, a shortcut shows up as an excellent score rather than a poor one, and is exposed only when the cue changes.
+
+Black box: |
+  A shorthand for a model whose behavior cannot be explained in terms a person can follow. Nothing is actually concealed---every parameter and intermediate value can be read out---but a complete account of one prediction runs to millions of numbers that individually mean nothing, so the model can be characterized by what it does rather than by why it does it.
+
+Attribution map: |
+  A per-pixel image indicating how much each part of an input contributed to a model's output, produced by one of several interpretability methods and usually read as a picture of what the model looked at. It supports that reading only weakly: some widely used methods produce almost the same map from a network whose weights have been randomized.

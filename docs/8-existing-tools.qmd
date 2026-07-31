@@ -151,6 +151,16 @@ C) Ilastik uses pixel-based machine learning to create semantic segmentation.
 The image is the input image with green shaded areas in the class "Cells” and red shaded areas in the class "Background”.
 :::
 
+<!-- TODO (requested from @sec-classification-detection): tracking tools have no
+     treatment anywhere in the book. Chapter 2 introduces the tracking-by-detection
+     structure and points readers here for the practical side. A companion to Box 1 would
+     be the natural home: TrackMate @ershov_trackmate_2022 as the tool most readers will
+     actually open (and the one that lets a modern segmentation model be plugged in as
+     the detector), plus the linker options and what to do when the detector is the part
+     that is failing @maska_cell_2023. Worth noting for tool selection that segmentation
+     quality dominates tracking scores, so effort usually belongs on the detector rather
+     than on the linker. -->
+
 ## Assessing your requirements for a tool (in the real world)
 
 In several previous surveys we have run, scientists have reported that they generally don't actually follow any thoughtful, rigorous process for deciding what tool they will use for a particular process.
@@ -300,7 +310,7 @@ The image above shows her new CellProfiler pipeline with the RunCellpose module 
 This case study starts with a scientist trying to use her standard classical image processing methodds for object identification but finding that she gets better results with a new challenging segmentation task by moving to an AI tool.
 It shows iterative improvements using the same tool in different ways and highlights some of the simple changes she needed to make to her overall workflow to use the new tool.
 
-### Case Study 2:  
+### Case Study 2: {#sec-case-study-2}
 
 #### Introduction
 
